@@ -1,0 +1,10 @@
+from,to,weight,year
+ua,ger,12,2025
+il,ger,10,2025
+ger,il,3,2025
+fra,il,7,2025
+ua,il,2,2025
+il,ua,4,2025
+ger,fra,10,2025
+ua,pop,12,2025
+il,pop,10,2025
