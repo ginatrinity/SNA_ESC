@@ -1,0 +1,14 @@
+from,to,weight
+ua,ger,12
+il,ger,10
+ger,il,3
+fra,il,7
+ua,il,2
+il,ua,4
+ger,fra,10
+ger,2025,
+il,2025,
+ua,2025,
+fra,2025,
+ua,pop,12
+il,pop,10
