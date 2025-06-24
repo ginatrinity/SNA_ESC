@@ -1,135 +1,61 @@
-# Datensatz Semesterverbund CRPR2 #
-Codebuch Stand 2021-05, aktualisiert 2021-10
-erstellt von Swaran Sandhu (sandhu@hdm-stuttgart.de)
+# Datensatz ESC Eurovision Song Contest #
+Codebuch Stand 24.06.2025, aktualisiert 24.06.2025
+erstellt von Gina Grad
 
 ## Inhalt
-- Edges.csv (Edgelist)
-- Nodes.csv (Nodelist)
-- Codebuch.md (Codierung der Datensätze)
+- edges_test_v2.csv (Edgelist)
+- nodes_test_v2.csv (Nodelist)
 
 ## Ursprung und Datenerhebung
-Ich habe den Datensatz unter den Studierenden des dritten Semesters im Kurs Netzwerkanalyse erhoben. Die Daten sind nach der Erhebung nach einem Zufallsprinzip anonymisiert worden.
+Die Daten stammen aus der offiziellen Webiste des ESC. Weitere bestimmungen zu dem Genre und den Ländern: 
 
-Das Netzwerk ist ein *gerichtetes one-mode Akteursnetzwerk*. Es wurden zwei getrennte Fragen erhoben:
-
-**Projektarbeitsnetzwerk work**  
-1a) Bei Hochschulprojekten arbeite ich am liebsten mit folgender Person aus meinem Semester: Bitte tragen Sie das Kürzel der Person ein.  
-1b) Bei Hochschulprojekten arbeite ich am auch gerne mit folgender Person aus meinem Semester: Bitte tragen Sie das Kürzel der zweiten Person ein.  
-  
-Für das Zusammenarbeitsnetzwerk *work* wurde der Person, die zuerst genannt wurde, ein Gewicht von 3 vergeben, die zweite Person erhielt ein Gewicht von 1. Insgesamt waren 76 Beziehungsmuster möglich.  
-
-**Unterstützungsnetzwerk help**  
-2a) Wenn Sie ein Problem oder eine studiengangsbezogene Frage haben, an welchen ihrer Mitstudenten aus ihrem Semester wenden Sie sich zuerst?  Bitte tragen Sie auch hier wieder das Kürzel ein.  
-2b) Wenn Sie ein Problem oder eine studiengangsbezogene Frage haben, an welchen ihrer Mitstudenten aus ihrem Semester wenden Sie sich als nächstes? Bitte tragen Sie auch hier wieder das Kürzel ein.
-  
-Für das Unterstützungsnetzwerk *help* wurde der Person, die zuerst genannt wurde, ein Gewicht von 3 vergeben, die zweite Person erhielt ein Gewicht von 1. Insgesamt waren 76 Beziehungsmuster möglich.
-  
-**Beziehungsnetzwerk love**  
-Das Edge-Attribut *complicated* beschreibt drei unterschiedliche Beziehungsmuster innerhalb der Gruppe. Diese Kriterien haben kein eigenes Gewicht, sondern sind über die Art der Beziehung definiert (reziproke Paarbeziehung, tinder-Aktivität, einseitige Beziehung).
+Das Netzwerk ist ein *gerichtetes two-mode Akteursnetzwerk*.
 
 **Umgang mit fehlgenden Werten**
-Fehlende Werte werden nicht erfasst.
+Fehlende Werte werden nicht erfasst. Nicht "NA", stattdessen wird kein Wert eingetragen.
 
 # EDGE-Attribute
 
-**id**  
-(eindeutige Codierung des Knoten)   
-codiert von 1 bis 38, jede ID entspricht einem Studenten
-
-**from**
-initiierender Knoten, in diesem Fall: Student/in fragt um Rat oder zeigt präferierte Zusammenarbeit
+**from**  
+from	    ID des Knotens Land (bsp.: ger) -> Land gibt Punkte an, Land stimmt für
 
 **to**
-erhaltender Knoten, in diesem Fall: Student/in wird um Rat gefragt oder für Zusammenarbeit präferiert
+to 	       ID des Knotens Land (bsp.: ger) ODER ID des Knotens Genre -> Land bekommt Punkte, Genre bekommt Punkte
 
-**weight**  
-Beziehungsstärke aufgrund der Nennung in den Fragen)  
-3 = sehr starke Beziehung (erste Nennung),   
-1 = starke Beziehung vorhanden (zweite Nennung)
+**weight**
+weight	  Punkteverteilung der Jury des ESC (1 = 1 Punkt, 2 = 2 Punkte, [...] 12 = 12 Punkte)
 
-**relation**
-Beziehungsart zwischen den Personen  
-1 = *work* Projektbasierte Beziehung: Bei einem gerichteten Netzwerk präferiert der Sender (erste Spalte) die Zusammenarbeit mit der genannten Zielperson (zweite Spalte).  
-2 = *help* Unterstützungsbeziehung: Bei einem gerichteten Netzwerk fragt der Sender (erste Spalte) die genannte Person (zweite Spalte) um Rat.  
-3 = *love* Liebesbeziehung zwischen Akteuren, codiert nach dem Attribut *complicated*
-
-**complicated**  
-1 = Beziehung (typische Paarbeziehung, d.h. reziprok zwischen beiden PartnerInnen),      
-2 = Tinder-Like (hat die person rechts geswiped, muss aber nicht gegenseitig sein)     
-3 = Crush (einseitig verliebt, ohne dass die Person etwas davon weiss).  
+**neighbor**
+neighbor  1 = Ja, es ist ein Nachbarland, 2 = Nein
 
 
-# NODE-Attribute  
+
+# NODE-Attribute 
   
 **id**  
-Identische ID wie aus der edgelist zur Identifikation der Knoten. In diesem Fall sind alle personenbezogenen Daten anonymisiert von 1 bis 38.
+id	    Abkürzung des Landes nach ISO (bsp.: ger), Abkürzung Genre ersten drei Buchstaben (bsp.: pop)
+An dieser Stelle kommen alle verwendeten ISO-Abkürzungen
+An dieser Stelle kommen alle verwendeten Genre-Abkürzungen
 
 **name**
-numerische ID
+name	  Landname englisch, Genre-Titel (bsp.: Pop)
+An dieser Stelle kommen alle verwendeten Genre-Titel
 
-**name_first**
-Vorname abgekürzt, z.B. für Visualisierung, falls der Name zu lange ist
+**region**
+region	 1 - 7, Falls in bestimmter Region Zugehörigkeit zu anderen Ländern besteht (bsp.: 1)
+1 = Northern Europe
+2 = Central Europe
+3 = Western Europe
+4 = Southern Europe
+5 = Southeastern Europe
+6 = Eastern Europe
+7 = Andere
 
-**sex**    
-Bitte geben Sie ihr Geschlecht an:  
-1 = weiblich  
-2 = männlich  
-3 = divers
+**type**    
+type  	1 als Land, 2 als Genre
   
-**crpr***    
-Welche Studienrichtung haben Sie vertieft?  
-1 = CR  
-2 = PR
-
-**height**  
-Größe in cm   
-
-**weight**  
-Gewicht in kg  
-
-**age_real**   
-Alter in natürlichen Zahlen.  
-
-**age**   
-Bitte geben Sie Ihr Alter an:  
-1 = bis 20 Jahre    
-2 = 21 bis 22 Jahre    
-3 = 23 bis 24 Jahre  
-4 = 25 und älter  
-
-**smoke**    
-Rauchen Sie mindestens ein Mal pro Woche?  
-1 = nein   
-2 = ja  
-  
-**tatoo**    
-Tatoo vorhanden?   
-1 = nein  
-2 = ja  
-
-**phone**  
-1 = android  
-2 = iOS/iphone  
-  
-**eyes**    
-Welche Augenfarbe?    
-1 = grün,   
-2 = blau,   
-3 = braun,   
-4 = blau.     
-
-**hair**  
-Welche Haarfarbe?  
-1 = braun,      
-2 = schwarz,   
-3 = blond,    
-4 = rot.    
-
-**location** 
-Wohnort, als string/characters codiert  
-
-**county**  
-Bundesland, als string/characters codiert  
+**year***    
+year  	2025 als Jahr
 
 
 ##
