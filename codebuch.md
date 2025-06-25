@@ -25,6 +25,9 @@ to 	       ID des Knotens Land (bsp.: ger) ODER ID des Knotens Genre -> Land bek
 **weight**
 weight	  Punkteverteilung der Jury des ESC (1 = 1 Punkt, 2 = 2 Punkte, [...] 12 = 12 Punkte)
 
+**year***    
+year  	2025 als Jahr
+
 **neighbor**
 neighbor  1 = Ja, es ist ein Nachbarland, 2 = Nein
 
@@ -53,9 +56,6 @@ region	 1 - 7, Falls in bestimmter Region Zugehörigkeit zu anderen Ländern bes
 
 **type**    
 type  	1 als Land, 2 als Genre
-  
-**year***    
-year  	2025 als Jahr
 
 
 ##
