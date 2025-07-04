@@ -7,9 +7,9 @@ erstellt von Gina Grad
 - nodes_test_v2.csv (Nodelist)
 
 ## Ursprung und Datenerhebung
-Die Daten stammen aus der offiziellen Webiste des ESC. Weitere bestimmungen zu dem Genre und den Ländern: 
+Die Daten stammen aus der offiziellen Webiste des ESC. Weitere Bestimmungen zu den Ländern: 
 
-Das Netzwerk ist ein *gerichtetes two-mode Akteursnetzwerk*.
+Das Netzwerk ist ein *gerichtetes one-mode Akteursnetzwerk*.
 
 **Umgang mit fehlgenden Werten**
 Fehlende Werte werden nicht erfasst. Nicht "NA", stattdessen wird kein Wert eingetragen.
@@ -20,13 +20,13 @@ Fehlende Werte werden nicht erfasst. Nicht "NA", stattdessen wird kein Wert eing
 from	    ID des Knotens Land (bsp.: ger) -> Land gibt Punkte an, Land stimmt für
 
 **to**
-to 	       ID des Knotens Land (bsp.: ger) ODER ID des Knotens Genre -> Land bekommt Punkte, Genre bekommt Punkte
+to 	      ID des Knotens Land (bsp.: ger) -> Land bekommt Punkte
 
 **weight**
 weight	  Punkteverteilung der Jury des ESC (1 = 1 Punkt, 2 = 2 Punkte, [...] 12 = 12 Punkte)
 
-**year***    
-year  	2025 als Jahr
+**year**    
+year    	2025 als Jahr
 
 **neighbor**
 neighbor  1 = Ja, es ist ein Nachbarland, 2 = Nein
@@ -36,13 +36,11 @@ neighbor  1 = Ja, es ist ein Nachbarland, 2 = Nein
 # NODE-Attribute 
   
 **id**  
-id	    Abkürzung des Landes nach ISO (bsp.: ger), Abkürzung Genre ersten drei Buchstaben (bsp.: pop)
+id	    Abkürzung des Landes nach ISO (bsp.: ger)
 An dieser Stelle kommen alle verwendeten ISO-Abkürzungen
-An dieser Stelle kommen alle verwendeten Genre-Abkürzungen
 
 **name**
-name	  Landname englisch, Genre-Titel (bsp.: Pop)
-An dieser Stelle kommen alle verwendeten Genre-Titel
+name	  Landname englisch
 
 **region**
 region	 1 - 7, Falls in bestimmter Region Zugehörigkeit zu anderen Ländern besteht (bsp.: 1)
@@ -53,9 +51,6 @@ region	 1 - 7, Falls in bestimmter Region Zugehörigkeit zu anderen Ländern bes
 5 = Southeastern Europe
 6 = Eastern Europe
 7 = Andere
-
-**type**    
-type  	1 als Land, 2 als Genre
 
 
 ##
